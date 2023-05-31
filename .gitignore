@@ -12,6 +12,7 @@ venv
 .idea
 **/artifacts/
 **/models/
+env
 
 __pycache__/
 **.env
