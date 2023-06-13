@@ -31,6 +31,7 @@ def make_predictions(model, X):
 
 
 def store_results(output_dir:str, df:pd.DataFrame):
+    print("storing results to output path: ", output_dir)
     df_result = pd.DataFrame()
 
     df['ride_id'] = f'{year:04d}/{month:02d}_' + df.index.astype('str')

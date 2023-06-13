@@ -21,8 +21,11 @@ RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
 FROM base_python AS runtime
 # Copy virtual env from python-deps stage
 COPY --from=python_deps /app/.venv /app/.venv
+# make output directory
+RUN mkdir /app/output
+# append virtual env to PATH environment variable
 ENV PATH="/app/.venv/bin:$PATH"
-COPY . .
-#CMD python /app/starter.py
+# copy application script
+COPY ["starter.py", "/app/starter.py"]
 ENTRYPOINT ["python", "/app/starter.py"]
 
