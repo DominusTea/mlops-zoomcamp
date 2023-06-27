@@ -17,7 +17,7 @@ from evidently.metrics import ColumnDriftMetric, DatasetDriftMetric, DatasetMiss
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s]: %(message)s")
 
-SEND_TIMEOUT = 10
+SEND_TIMEOUT = 1
 rand = random.Random()
 
 create_table_statement = """
@@ -50,7 +50,7 @@ column_mapping = ColumnMapping(
 
 report = Report(metrics=[
     ColumnDriftMetric(column_name='prediction'),
-    ColumnQuantileMetric(column_name='fare_amount', quantile=0.75),
+    ColumnQuantileMetric(column_name='fare_amount', quantile=0.5),
     ColumnCorrelationsMetric(column_name='prediction'),
     DatasetDriftMetric(),
     DatasetMissingValuesMetric()
